@@ -1,11 +1,16 @@
-%define snapshot 20200312
+#define snapshot 20200312
 %define commit 82a4fcce5f208d749089697b045cb4bdb00bf987
+%define stable %([ "`echo %{version}.0 |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		keysmith
-Version:	0.0
-Release:	0.%{snapshot}.1
+Version:	0.2
+Release:	%{?snapshot:0.%{snapshot}.}1
 Summary:	One-Time Password client for Plasma Mobile
-Source0:	https://invent.kde.org/kde/keysmith/-/archive/master/keysmith-%{snapshot}.tar.bz2
+%if 0%{?snapshot:1}
+Source0:	https://invent.kde.org/utilities/keysmith/-/archive/master/keysmith-%{snapshot}.tar.bz2
+%else
+Source0:	https://download.kde.org/%{stable}/keysmith/%{version}/keysmith-v%{version}.tar.gz
+%endif
 License:	GPLv3
 Group:		Applications/Productivity
 BuildRequires:	cmake
@@ -37,7 +42,7 @@ BuildRequires:	cmake(ZXing)
 One-Time Password client for Plasma Mobile
 
 %prep
-%autosetup -p1 -n %{name}-master-%{commit}
+%autosetup -p1 -n %{name}-v%{version}
 %cmake_kde5 -G Ninja
 
 %build
@@ -45,8 +50,9 @@ One-Time Password client for Plasma Mobile
 
 %install
 %ninja_install -C build
+%find_lang %{name}
 
-%files
+%files -f %{name}.lang
 %{_bindir}/keysmith
 %{_datadir}/applications/org.kde.keysmith.desktop
 %{_datadir}/icons/hicolor/*/*/*
