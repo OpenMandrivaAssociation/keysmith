@@ -37,6 +37,7 @@ BuildRequires:	cmake(Perl)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	cmake(QXmpp)
 BuildRequires:	cmake(ZXing)
+BuildRequires:	pkgconfig(libsodium)
 
 %description
 One-Time Password client for Plasma Mobile
