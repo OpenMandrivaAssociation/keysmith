@@ -1,15 +1,15 @@
 #define snapshot 20200312
-%define commit 82a4fcce5f208d749089697b045cb4bdb00bf987
-%define stable %([ "`echo %{version}.0 |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+#define commit 82a4fcce5f208d749089697b045cb4bdb00bf987
+#define stable %([ "`echo %{version}.0 |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		keysmith
-Version:	0.2
+Version:	21.06
 Release:	%{?snapshot:0.%{snapshot}.}1
 Summary:	One-Time Password client for Plasma Mobile
 %if 0%{?snapshot:1}
 Source0:	https://invent.kde.org/utilities/keysmith/-/archive/master/keysmith-%{snapshot}.tar.bz2
 %else
-Source0:	https://download.kde.org/%{stable}/keysmith/%{version}/keysmith-v%{version}.tar.gz
+Source0:	https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz
 %endif
 License:	GPLv3
 Group:		Applications/Productivity
@@ -43,7 +43,7 @@ BuildRequires:	pkgconfig(libsodium)
 One-Time Password client for Plasma Mobile
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1
 %cmake_kde5 -G Ninja
 
 %build
