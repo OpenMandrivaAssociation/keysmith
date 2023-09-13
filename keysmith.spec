@@ -4,7 +4,7 @@
 
 Name:		keysmith
 Version:	23.08.0
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 Summary:	One-Time Password client for Plasma Mobile
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/utilities/keysmith/-/archive/master/keysmith-%{git}.tar.bz2
