@@ -3,8 +3,8 @@
 %define stable %([ "`echo %{version}.0 |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		plasma6-keysmith
-Version:	24.01.90
-Release:	%{?git:0.%{git}.}2
+Version:	24.01.95
+Release:	%{?git:0.%{git}.}1
 Summary:	One-Time Password client for Plasma Mobile
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/utilities/keysmith/-/archive/master/keysmith-%{git}.tar.bz2
