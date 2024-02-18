@@ -1,13 +1,14 @@
-#define git 20200312
-#define commit 82a4fcce6f208d749089697b046cb4bdb00bf987
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "`echo %{version}.0 |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		plasma6-keysmith
-Version:	24.01.95
+Version:	24.01.96
 Release:	%{?git:0.%{git}.}1
 Summary:	One-Time Password client for Plasma Mobile
 %if 0%{?git:1}
-Source0:	https://invent.kde.org/utilities/keysmith/-/archive/master/keysmith-%{git}.tar.bz2
+Source0:	https://invent.kde.org/utilities/keysmith/-/archive/%{gitbranch}/keysmith-%{gitbranchd}.tar.bz2#/keysmith-%{git}.tar.bz2
 %else
 Source0:	https://download.kde.org/%{stable}/release-service/%{version}/src/keysmith-%{version}.tar.xz
 %endif
@@ -44,7 +45,7 @@ BuildRequires:	pkgconfig(libsodium)
 One-Time Password client for Plasma Mobile
 
 %prep
-%autosetup -p1 -n keysmith-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n keysmith-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja -G Ninja
