@@ -5,7 +5,7 @@
 
 Name:		plasma6-keysmith
 Version:	24.12.3
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 Summary:	One-Time Password client for Plasma Mobile
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/utilities/keysmith/-/archive/%{gitbranch}/keysmith-%{gitbranchd}.tar.bz2#/keysmith-%{git}.tar.bz2
