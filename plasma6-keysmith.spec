@@ -44,6 +44,7 @@ BuildRequires:	cmake(Qt6LinguistTools)
 BuildRequires:	cmake(QXmpp)
 BuildRequires:	cmake(ZXing)
 BuildRequires:	qml(org.kde.prison.scanner)
+BuildRequires:	cmake(KF6Prison)
 BuildRequires:	pkgconfig(libsodium)
 BuildRequires:	pkgconfig(openssl)
 
