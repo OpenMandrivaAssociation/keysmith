@@ -43,7 +43,9 @@ BuildRequires:	cmake(Perl)
 BuildRequires:	cmake(Qt6LinguistTools)
 BuildRequires:	cmake(QXmpp)
 BuildRequires:	cmake(ZXing)
+BuildRequires:	qml(org.kde.prison.scanner)
 BuildRequires:	pkgconfig(libsodium)
+BuildRequires:	pkgconfig(openssl)
 
 %description
 One-Time Password client for Plasma Mobile
