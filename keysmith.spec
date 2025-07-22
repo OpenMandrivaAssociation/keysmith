@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version}.0 |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		keysmith
-Version:	25.04.0
+Version:	25.04.3
 Release:	%{?git:0.%{git}.}1
 Summary:	One-Time Password client for Plasma Mobile
 %if 0%{?git:1}
@@ -48,23 +48,15 @@ BuildRequires:	cmake(KF6Prison)
 BuildRequires:	pkgconfig(libsodium)
 BuildRequires:	pkgconfig(openssl)
 
+%rename plasma6-keysmith
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
 %description
 One-Time Password client for Plasma Mobile
 
-%prep
-%autosetup -p1 -n keysmith-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja -G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-%find_lang keysmith
-
-%files -f keysmith.lang
+%files -f %{name}.lang
 %{_bindir}/keysmith
 %{_datadir}/applications/org.kde.keysmith.desktop
 %{_datadir}/icons/hicolor/*/*/*
