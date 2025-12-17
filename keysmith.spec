@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version}.0 |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		keysmith
-Version:	25.08.3
+Version:	25.12.0
 Release:	%{?git:0.%{git}.}1
 Summary:	One-Time Password client for Plasma Mobile
 %if 0%{?git:1}
