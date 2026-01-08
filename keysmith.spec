@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version}.0 |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		keysmith
-Version:	25.12.0
+Version:	25.12.1
 Release:	%{?git:0.%{git}.}1
 Summary:	One-Time Password client for Plasma Mobile
 %if 0%{?git:1}
@@ -42,7 +42,7 @@ BuildRequires:	cmake(KF6QQC2DesktopStyle)
 BuildRequires:	cmake(PkgConfig)
 BuildRequires:	cmake(Perl)
 BuildRequires:	cmake(Qt6LinguistTools)
-BuildRequires:	cmake(QXmpp)
+BuildRequires:	cmake(QXmppQt6)
 BuildRequires:	cmake(ZXing)
 BuildRequires:	qml(org.kde.prison.scanner)
 BuildRequires:	cmake(KF6Prison)
